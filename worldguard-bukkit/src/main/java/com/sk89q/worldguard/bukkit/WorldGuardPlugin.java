@@ -559,15 +559,11 @@ public class WorldGuardPlugin extends JavaPlugin {
 
     private final LazyReference<Boolean> folia = LazyReference.from(() -> {
         try {
-            // Folia is Paper-based, so this is a good first check.
-            if (PaperLib.isPaper()) {
-                return getWorldEdit().isFolia(); // Delegate check to WorldEdit
-            }
+            return getWorldEdit().isFolia(); // Delegate check to WorldEdit
         } catch (Throwable t) {
             // Ignore, this likely means an outdated version.
             LOGGER.warn("Failed to check if server is running Folia", t);
         }
-
         return false;
     });
 
